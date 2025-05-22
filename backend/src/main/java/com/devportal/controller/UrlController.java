@@ -3,64 +3,60 @@ package com.devportal.controller;
 import java.text.MessageFormat;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import com.devportal.RateLimit;
+import com.devportal.annotation.RateLimit;
+import com.devportal.constants.UrlConstants;
 import com.devportal.service.UrlShortenerService;
 import com.devportal.to.response.ShortenUrlResponse;
+import com.devportal.util.Util;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class UrlController {
 
 	@Autowired
 	private UrlShortenerService service;
 
-	private Logger LOGGER = LoggerFactory.getLogger(UrlController.class);
-
-	@RateLimit(key = "shorten")
-	@RequestMapping(value = "/shorten", method = RequestMethod.POST)
-	@ResponseBody
+	@RateLimit(key = "shorten-url", maxLimit = 2, windowInSeconds = 60)
+	@PostMapping(value = "/shorten")
 	public ShortenUrlResponse shortenUrl(@RequestBody Map<String, String> request) {
-		String shortCode = service.shortenUrl(request.get("longUrl"));
-		LOGGER.info(MessageFormat.format("Short Code: {0}", shortCode));
+		ShortenUrlResponse res = Util.createSuccessResp(ShortenUrlResponse.class, UrlConstants.CREATE_SUCCESS_MSG,
+				HttpStatus.CREATED);
 
-		ShortenUrlResponse res = new ShortenUrlResponse(200, "Data Returned Successfuly", true);
+		String shortCode = service.shortenUrl(request.get("longUrl"));
+		Util.printLog(MessageFormat.format("Short Code: {0}", shortCode));
 		res.setShortCode(shortCode);
 
 		return res;
 	}
 
-	@RequestMapping(value = "/expand/{shortURL}", method = RequestMethod.GET)
-	@ResponseBody
+	@GetMapping(value = "/expand/{shortURL}")
 	public ShortenUrlResponse expandUrl(@PathVariable String shortURL) {
-		ShortenUrlResponse res = null;
-		try {
-			String originalUrl = service.getOriginalUrl(shortURL);
-			res = new ShortenUrlResponse(200, "Data Returned Successfuly", true);
-			res.setOriginalURL(originalUrl);
-		} catch (RuntimeException e) {
-			res = new ShortenUrlResponse(500, e.getMessage(), false);
-		}
+		ShortenUrlResponse res = Util.createSuccessResp(ShortenUrlResponse.class, UrlConstants.RETURN_SUCCESS_MSG,
+				HttpStatus.OK);
+
+		String originalUrl = service.getOriginalUrl(shortURL);
+		res.setOriginalURL(originalUrl);
 
 		return res;
 	}
 
-	@RequestMapping(value = "/getAllMappings", method = RequestMethod.GET)
-	@ResponseBody
+	@GetMapping(value = "/getAllMappings")
 	public ShortenUrlResponse getAllMappings() {
-		ShortenUrlResponse res = new ShortenUrlResponse(200, "Data Returned Successfuly", true);
+		ShortenUrlResponse res = Util.createSuccessResp(ShortenUrlResponse.class, UrlConstants.RETURN_SUCCESS_MSG,
+				HttpStatus.OK);
+
 		service.getAllMappings(res);
 		if (res.getCount() == 0) {
-			res.setMessage("Data Not Found");
+			res.setMessage(UrlConstants.DATA_NOT_FOUND);
 		}
 
 		return res;
