@@ -131,5 +131,5 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 **Dev Portal**
 Follow for more backend-focused tutorials and projects.
-LinkedIn: [LinkedIn](https://www.linkedin.com/in/nakul-mitra-microservices-spring-boot-java-postgresql/)
-YouTube: [Dev Portal](https://www.youtube.com/@DevPortal2114)
+* LinkedIn: [LinkedIn Profile](https://www.linkedin.com/in/nakul-mitra-microservices-spring-boot-java-postgresql/)
+* YouTube: [Dev Portal](https://www.youtube.com/@DevPortal2114)
