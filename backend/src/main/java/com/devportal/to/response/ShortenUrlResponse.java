@@ -12,8 +12,8 @@ public class ShortenUrlResponse extends ApiResponse {
 	private List<UrlMapping> urlMappingList;
 	private Long count;
 
-	public ShortenUrlResponse(int statusCode, String message, boolean success) {
-		super(statusCode, message, success);
+	public ShortenUrlResponse() {
+		super();
 	}
 
 	public UrlMapping getUrlMapping() {
