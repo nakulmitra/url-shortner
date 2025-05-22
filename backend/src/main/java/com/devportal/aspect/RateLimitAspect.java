@@ -1,5 +1,6 @@
 package com.devportal.aspect;
 
+import java.text.MessageFormat;
 import java.time.Duration;
 import java.util.UUID;
 
@@ -7,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
-import com.devportal.RateLimit;
+import com.devportal.annotation.RateLimit;
+import com.devportal.exceptions.RateLimitException;
+import com.devportal.util.Util;
 
 @Aspect
 @Component
@@ -23,36 +24,36 @@ public class RateLimitAspect {
 	private HttpServletRequest req;
 
 	@Autowired
-	private RedisTemplate<String, String> redisTemplate;
-	
-	private Logger LOGGER = LoggerFactory.getLogger(RateLimitAspect.class);
+	private RedisTemplate<String, Object> redisTemplate;
 
 	@Before("@annotation(rateLimit)")
-	public void validateRateLimit(RateLimit rateLimit) throws Exception {
+	public void validateRateLimit(RateLimit rateLimit) {
 		String key = rateLimit.key() + "-" + req.getRemoteAddr();
 
 		boolean allowed = isAllowed(key, rateLimit.maxLimit(), rateLimit.windowInSeconds());
 		if (!allowed) {
-			throw new Exception("Rate limit exceeded for " + rateLimit.key());
+			throw new RateLimitException("Rate limit exceeded for " + rateLimit.key());
 		}
 	}
 
 	private boolean isAllowed(String redisKey, int maxLimit, int windowSize) {
-		long now = System.currentTimeMillis();
-
-		redisTemplate.opsForZSet().removeRangeByScore(redisKey, 0, now - (windowSize * 1000L));
+		boolean requestAllowed = true;
 		
+		long now = System.currentTimeMillis();
+		redisTemplate.opsForZSet().removeRangeByScore(redisKey, 0, now - (windowSize * 1000L));
+
 		String key = String.valueOf(now) + "-" + UUID.randomUUID();
-		LOGGER.debug("Key: " + key);
+		Util.printLog(MessageFormat.format("Redis Key: {0} \nKey: {1}", redisKey, key));
+
 		redisTemplate.opsForZSet().add(redisKey, key, now);
 
 		Long count = redisTemplate.opsForZSet().zCard(redisKey);
 		redisTemplate.expire(redisKey, Duration.ofSeconds(60));
 
 		if (count != null && count > maxLimit) {
-			return false;
+			requestAllowed = false;
 		}
 
-		return true;
+		return requestAllowed;
 	}
 }
