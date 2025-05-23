@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "url_mapping", schema = "projects")
-public class UrlMapping {
+public class URLMapping {
 
 	@Id
 	@Column(name = "short_code")
