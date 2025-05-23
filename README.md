@@ -90,11 +90,11 @@ http://localhost:4200
 
 ## Sample API Endpoints
 
-| Method | Endpoint              | Description               |
-| ------ | ----------------------| ------------------------- |
-| POST   | `/api/shorten`        | Create short URL          |
-| GET    | `/api/{shortId}`      | Retrieve original URL     |
-| GET    | `/api/getAllMappings` | Retrive all original URL  |
+| Method | Endpoint                 | Description               |
+| ------ | -------------------------| ------------------------- |
+| POST   | `/api/shorten`           | Create short URL          |
+| POST   | `/api/expand`            | Retrieve original URL     |
+| GET    | `/api/getAllURLMappings` | Retrive all original URL  |
 
 ## API Response Structure
 
@@ -104,8 +104,8 @@ http://localhost:4200
   "statusCode": 201,
   "message": "Data created successfuly",
   "success": true,
-  "timestamp": "2025-05-22T15:40:20.166+00:00",
-  "shortCode": "DqRp6m"
+  "timestamp": "2025-05-23T13:02:32.275+00:00",
+  "shortURL": "http://devportal.com/hYUPPR"
 }
 ```
 
@@ -114,7 +114,7 @@ http://localhost:4200
 Example console output:
 
 ```
-2025-05-22 20:30:18.930 DEBUG 760 --- [nio-8081-exec-1] com.devportal.util.Util : Original URL: https://stackoverflow.com/...
+2025-05-23 18:41:49.657 ERROR 22536 --- [nio-8081-exec-3] com.devportal.util.Util : Invalid short URL prefix for URL: https://start.spring.io/
 ```
 
 ## TODO
