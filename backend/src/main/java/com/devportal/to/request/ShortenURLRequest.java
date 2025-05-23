@@ -1,13 +1,20 @@
 package com.devportal.to.request;
 
-public class ShortenUrlRequest {
-	private String longUrl;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-	public String getLongUrl() {
-		return longUrl;
+public class ShortenURLRequest {
+
+	@NotBlank(message = "URL cannot be blank")
+	@Pattern(regexp = "^(http|https)://[^\\s$.?#].[^\\s]*$", message = "Invalid URL format")
+	private String url;
+
+	public String getUrl() {
+		return url;
 	}
 
-	public void setLongUrl(String longUrl) {
-		this.longUrl = longUrl;
+	public void setUrl(String url) {
+		this.url = url;
 	}
+
 }

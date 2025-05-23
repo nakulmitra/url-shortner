@@ -2,34 +2,35 @@ package com.devportal.to.response;
 
 import java.util.List;
 
-import com.devportal.bean.UrlMapping;
+import com.devportal.bean.URLMapping;
+import com.devportal.constants.URLConstants;
 
-public class ShortenUrlResponse extends ApiResponse {
+public class ShortenURLResponse extends ApiResponse {
 
-	private UrlMapping urlMapping;
-	private String shortCode;
+	private URLMapping urlMapping;
+	private String shortURL;
 	private String originalURL;
-	private List<UrlMapping> urlMappingList;
+	private List<URLMapping> urlMappingList;
 	private Long count;
 
-	public ShortenUrlResponse() {
+	public ShortenURLResponse() {
 		super();
 	}
 
-	public UrlMapping getUrlMapping() {
+	public URLMapping getUrlMapping() {
 		return urlMapping;
 	}
 
-	public void setUrlMapping(UrlMapping urlMapping) {
+	public void setUrlMapping(URLMapping urlMapping) {
 		this.urlMapping = urlMapping;
 	}
 
-	public String getShortCode() {
-		return shortCode;
+	public String getShortURL() {
+		return shortURL;
 	}
 
-	public void setShortCode(String shortCode) {
-		this.shortCode = shortCode;
+	public void setShortURL(String shortURL) {
+		this.shortURL = URLConstants.PREFIX + shortURL;
 	}
 
 	public String getOriginalURL() {
@@ -40,11 +41,11 @@ public class ShortenUrlResponse extends ApiResponse {
 		this.originalURL = originalURL;
 	}
 
-	public List<UrlMapping> getUrlMappingList() {
+	public List<URLMapping> getUrlMappingList() {
 		return urlMappingList;
 	}
 
-	public void setUrlMappingList(List<UrlMapping> urlMappingList) {
+	public void setUrlMappingList(List<URLMapping> urlMappingList) {
 		this.urlMappingList = urlMappingList;
 	}
 
