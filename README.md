@@ -119,8 +119,8 @@ Example console output:
 
 ## TODO
 
-* Add custom domain configuration.
-* Add user authentication (optional).
+* Create & add user authentication.
+* Add messaging queue to update hit count.
 * Dockerize the application.
 
 ## Contributing
