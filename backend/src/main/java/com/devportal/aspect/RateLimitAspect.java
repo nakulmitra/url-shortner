@@ -24,7 +24,7 @@ public class RateLimitAspect {
 	private HttpServletRequest req;
 
 	@Autowired
-	private RedisTemplate<String, Object> redisTemplate;
+	private RedisTemplate<String, String> redisTemplate;
 
 	@Before("@annotation(rateLimit)")
 	public void validateRateLimit(RateLimit rateLimit) {
