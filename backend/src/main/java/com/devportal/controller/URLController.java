@@ -31,11 +31,11 @@ public class URLController {
 	@RateLimit(key = "shorten-url", maxLimit = 2, windowInSeconds = 60)
 	@PostMapping(value = "/shorten")
 	public ShortenURLResponse shortenUrl(@RequestBody @Valid ShortenURLRequest request) {
-		ShortenURLResponse res = Util.createSuccessResp(ShortenURLResponse.class, URLConstants.CREATE_SUCCESS_MSG,
-				HttpStatus.CREATED);
-
 		String shortCode = service.shortenUrl(request.getUrl());
 		Util.printLog(MessageFormat.format("Short Code: {0}", shortCode));
+
+		ShortenURLResponse res = Util.createSuccessResp(ShortenURLResponse.class, URLConstants.CREATE_SUCCESS_MSG,
+				HttpStatus.CREATED);
 		res.setShortURL(shortCode);
 
 		return res;
