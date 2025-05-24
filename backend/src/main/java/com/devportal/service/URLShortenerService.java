@@ -103,7 +103,7 @@ public class URLShortenerService {
 	private String generateRandomShortCode() {
 		StringBuilder sb = new StringBuilder(6);
 		for (int i = 0; i < 6; i++) {
-			sb.append(URLConstants.ALLOWED_CHARS.charAt(random.nextInt(URLConstants.ALLOWED_CHARS.length())));
+			sb.append(URLConstants.ALLOWED_CHARS.charAt(random.nextInt(URLConstants.ALLOWED_CHARS_TOTAL_LENGTH)));
 		}
 		return sb.toString();
 	}
