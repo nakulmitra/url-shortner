@@ -25,7 +25,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAutoConfiguration
 @EnableAspectJAutoProxy(exposeProxy = true)
 @EnableAsync
-public class UrlShortenerApplication {
+public class URLShortenerApplication {
 
 	@Value("${spring.datasource.url}")
 	private String dataSourceUrl;
@@ -40,7 +40,7 @@ public class UrlShortenerApplication {
 	private String datasourceRead;
 
 	public static void main(String[] args) {
-		SpringApplication.run(UrlShortenerApplication.class, args);
+		SpringApplication.run(URLShortenerApplication.class, args);
 	}
 
 	@Bean
