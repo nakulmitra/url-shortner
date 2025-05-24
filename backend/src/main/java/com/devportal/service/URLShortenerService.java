@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.devportal.bean.URLMapping;
 import com.devportal.constants.URLConstants;
 import com.devportal.dao.URLMappingRepository;
+import com.devportal.exceptions.DataAlreadyExists;
 import com.devportal.exceptions.DataNotFoundException;
 import com.devportal.to.response.ShortenURLResponse;
 import com.devportal.util.Util;
@@ -37,7 +38,8 @@ public class URLShortenerService {
 				sessionFactroy);
 
 		if (shortCode != null) {
-			return shortCode;
+			throw new DataAlreadyExists(shortCode,
+					MessageFormat.format("Short url already exist for: {0}", originalUrl));
 		}
 
 		return createAndStoreNewShortCode(originalUrl);
@@ -87,6 +89,9 @@ public class URLShortenerService {
 		if (null == url) {
 			url = repository.findUrlValue(URLConstants.ORIGINAL_URL, URLConstants.SHORT_CODE, shortCode,
 					sessionFactroy);
+			if (null != url) {
+				util.saveDataInRedis(shortCode, url, 120);
+			}
 		}
 
 		return url;
