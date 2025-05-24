@@ -17,5 +17,6 @@ public class URLConstants {
 	public static final String CREATED_AT = "createdAt";
 
 	public static final String ALLOWED_CHARS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	public static final int ALLOWED_CHARS_LENGTH = ALLOWED_CHARS.length();
 
 }
