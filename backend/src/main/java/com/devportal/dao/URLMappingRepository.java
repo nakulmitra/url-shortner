@@ -9,7 +9,6 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.SessionFactory;
-import org.springframework.data.redis.connection.SortParameters.Order;
 import org.springframework.stereotype.Repository;
 
 import com.devportal.bean.URLMapping;
