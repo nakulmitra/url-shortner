@@ -68,7 +68,7 @@ public class URLMappingRepository {
 
 		Root<URLMapping> root = cr.from(URLMapping.class);
 		cr.select(root);
-		
+
 		cr.orderBy(cb.asc(root.get(URLConstants.CREATED_AT)));
 
 		return sessionFactory.getCurrentSession().createQuery(cr).setFirstResult(offset).setMaxResults(limit)
@@ -87,7 +87,8 @@ public class URLMappingRepository {
 
 	public void updateHitCount(String shortCode, SessionFactory sessionFactory) {
 		sessionFactory.getCurrentSession()
-				.createSQLQuery("update projects.url_mapping set hit_count = hit_count + 1 where short_code =:shortCode")
+				.createSQLQuery(
+						"update projects.url_mapping set hit_count = hit_count + 1 where short_code =:shortCode")
 				.setParameter(URLConstants.SHORT_CODE, shortCode).executeUpdate();
 		sessionFactory.getCurrentSession().flush();
 		sessionFactory.getCurrentSession().clear();
