@@ -32,13 +32,13 @@ public class RateLimitAspect {
 
 		boolean allowed = isAllowed(key, rateLimit.maxLimit(), rateLimit.windowInSeconds());
 		if (!allowed) {
-			throw new RateLimitException("Rate limit exceeded for " + rateLimit.key());
+			throw new RateLimitException(MessageFormat.format("Rate limit exceeded for {0}", rateLimit.key()));
 		}
 	}
 
 	private boolean isAllowed(String redisKey, int maxLimit, int windowSize) {
 		boolean requestAllowed = true;
-		
+
 		long now = System.currentTimeMillis();
 		redisTemplate.opsForZSet().removeRangeByScore(redisKey, 0, now - (windowSize * 1000L));
 
@@ -48,7 +48,7 @@ public class RateLimitAspect {
 		redisTemplate.opsForZSet().add(redisKey, key, now);
 
 		Long count = redisTemplate.opsForZSet().zCard(redisKey);
-		redisTemplate.expire(redisKey, Duration.ofSeconds(60));
+		redisTemplate.expire(redisKey, Duration.ofSeconds(windowSize));
 
 		if (count != null && count > maxLimit) {
 			requestAllowed = false;
