@@ -1,6 +1,6 @@
 <configuration>
 	<property name="LOG_DIR" value="logs" />
-	<timestamp key="LOG_DATE" datePattern="yyyy-MM-dd" />
+	<timestamp key="LOG_DATE" datePattern="dd-MM-yyyy" />
 	<property name="LOG_PATTERN"
 		value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n" />
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
