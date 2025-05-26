@@ -6,6 +6,7 @@ import java.util.Random;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -89,6 +90,7 @@ public class URLShortenerService {
 		if (null == url) {
 			url = repository.findUrlValue(URLConstants.ORIGINAL_URL, URLConstants.SHORT_CODE, shortCode,
 					sessionFactroy);
+
 			if (null != url) {
 				util.saveDataInRedis(shortCode, url, 120);
 			}
@@ -97,6 +99,7 @@ public class URLShortenerService {
 		return url;
 	}
 
+	@Async
 	public void updateHitCount(String shortCode) {
 		try {
 			repository.updateHitCount(shortCode, sessionFactroy);
