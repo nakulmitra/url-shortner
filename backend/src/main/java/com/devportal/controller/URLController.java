@@ -2,6 +2,7 @@ package com.devportal.controller;
 
 import java.text.MessageFormat;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import com.devportal.constants.URLConstants;
 import com.devportal.service.URLShortenerService;
 import com.devportal.to.request.ShortenURLRequest;
 import com.devportal.to.response.ShortenURLResponse;
+import com.devportal.util.AuditLogger;
 import com.devportal.util.Util;
 import com.devportal.validation.URLValidation;
 
@@ -27,6 +29,12 @@ public class URLController {
 
 	@Autowired
 	private URLShortenerService service;
+
+	@Autowired
+	private AuditLogger auditLogger;
+
+	@Autowired
+	private HttpServletRequest httpRequest;
 
 	@RateLimit(key = "shorten-url", maxLimit = 2, windowInSeconds = 60)
 	@PostMapping(value = "/shorten")
@@ -38,6 +46,7 @@ public class URLController {
 				HttpStatus.CREATED);
 		res.setShortURL(shortCode);
 
+		auditLogger.log(MessageFormat.format("Shorten URL for Original URL: {0}", request.getUrl()), httpRequest);
 		return res;
 	}
 
@@ -55,6 +64,7 @@ public class URLController {
 			return buildErrorResponse("Invalid short URL format", HttpStatus.BAD_REQUEST);
 		}
 
+		auditLogger.log(MessageFormat.format("Expanded URL for shortcode: {0}", shortCode), httpRequest);
 		return getOriginalUrl(shortCode);
 	}
 
@@ -83,6 +93,7 @@ public class URLController {
 			res.setMessage(URLConstants.DATA_NOT_FOUND);
 		}
 
+		auditLogger.log("Get all URLs", httpRequest);
 		return res;
 	}
 
