@@ -16,8 +16,23 @@
 			<pattern>${LOG_PATTERN}</pattern>
 		</encoder>
 	</appender>
+
+	<appender name="AUDIT_FILE"
+		class="ch.qos.logback.core.FileAppender">
+		<file>${LOG_DIR}/audit-${LOG_DATE}.log</file>
+		<append>true</append>
+		<encoder>
+			<pattern>${LOG_PATTERN}</pattern>
+		</encoder>
+	</appender>
+
 	<root level="DEBUG">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="FILE" />
 	</root>
+
+	<logger name="AUDIT_LOGGER" level="TRACE" additivity="false">
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="AUDIT_FILE" />
+	</logger>
 </configuration>
