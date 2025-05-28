@@ -11,9 +11,9 @@ public class AuditLogger {
 
 	private static Logger AUDIT_LOGGER = LoggerFactory.getLogger("AUDIT_LOGGER");
 
-	public void log(String message, HttpServletRequest request) {
+	public void log(String action, HttpServletRequest request) {
 		String ip = getClientIp(request);
-		AUDIT_LOGGER.trace("AUDIT | IP: {} | Message: {}", ip, message);
+		AUDIT_LOGGER.trace("AUDIT | IP: {} | Action: {}", ip, action);
 	}
 
 	private String getClientIp(HttpServletRequest request) {

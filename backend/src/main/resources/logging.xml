@@ -4,7 +4,7 @@
 	<property name="LOG_PATTERN"
 		value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n" />
 	<appender name="FILE" class="ch.qos.logback.core.FileAppender">
-		<file>${LOG_DIR}/application-${LOG_DATE}.log</file>
+		<file>${LOG_DIR}/application/application-${LOG_DATE}.log</file>
 		<append>true</append>
 		<encoder>
 			<pattern>${LOG_PATTERN}</pattern>
@@ -19,7 +19,7 @@
 
 	<appender name="AUDIT_FILE"
 		class="ch.qos.logback.core.FileAppender">
-		<file>${LOG_DIR}/audit-${LOG_DATE}.log</file>
+		<file>${LOG_DIR}/audit/audit-${LOG_DATE}.log</file>
 		<append>true</append>
 		<encoder>
 			<pattern>${LOG_PATTERN}</pattern>
