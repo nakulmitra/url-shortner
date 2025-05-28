@@ -1,0 +1,2 @@
+2025-05-28 21:22:06.279 TRACE [http-nio-8081-exec-2] AUDIT_LOGGER - AUDIT | IP: 0:0:0:0:0:0:0:1 | Action: Get all URLs
+2025-05-28 21:22:09.280 TRACE [http-nio-8081-exec-1] AUDIT_LOGGER - AUDIT | IP: 0:0:0:0:0:0:0:1 | Action: Expanded URL for shortcode: sbHGzU
