@@ -6,11 +6,11 @@ import java.util.Random;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.devportal.async.HitCountUpdater;
 import com.devportal.bean.URLMapping;
 import com.devportal.constants.URLConstants;
 import com.devportal.dao.URLMappingRepository;
@@ -24,6 +24,9 @@ public class URLShortenerService {
 
 	@Autowired
 	private SessionFactory sessionFactroy;
+	
+	@Autowired
+	private HitCountUpdater hitCountUpdater;
 
 	@Autowired
 	private URLMappingRepository repository;
@@ -79,7 +82,7 @@ public class URLShortenerService {
 		}
 
 		Util.printLog(MessageFormat.format("Original URL: {0} for shortCode: {1}", originalUrl, shortCode));
-		updateHitCount(shortCode);
+		hitCountUpdater.updateHitCountAsync(shortCode);
 
 		return originalUrl;
 	}
@@ -97,15 +100,6 @@ public class URLShortenerService {
 		}
 
 		return url;
-	}
-
-	@Async
-	public void updateHitCount(String shortCode) {
-		try {
-			repository.updateHitCount(shortCode, sessionFactroy);
-		} catch (Exception e) {
-			Util.printError(MessageFormat.format("Failed to update hit count for short code: {0}", shortCode));
-		}
 	}
 
 	private String generateRandomShortCode() {
