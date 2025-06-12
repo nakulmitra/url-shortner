@@ -82,7 +82,7 @@ public class URLShortenerService {
 		}
 
 		Util.printLog(MessageFormat.format("Original URL: {0} for shortCode: {1}", originalUrl, shortCode));
-		hitCountUpdater.updateHitCountAsync(shortCode);
+		hitCountUpdater.recordHitCount(shortCode);
 
 		return originalUrl;
 	}

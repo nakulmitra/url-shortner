@@ -4,6 +4,7 @@ import java.text.MessageFormat;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,9 @@ public class HitCountUpdater {
 
 	@Autowired
 	private URLMappingRepository repository;
+	
+	@Autowired
+	private RedisTemplate<String, String> redisTemplate;
 
 	@Async
 	@Transactional
@@ -28,6 +32,10 @@ public class HitCountUpdater {
 		} catch (Exception ex) {
 			Util.printError(MessageFormat.format("Failed to update hit count for short code: {0}", shortCode));
 		}
+	}
+
+	public void recordHitCount(String shortCode) {
+		redisTemplate.opsForValue().increment("hitCount:" + shortCode);
 	}
 
 }
