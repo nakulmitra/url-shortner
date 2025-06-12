@@ -14,7 +14,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>URL_Shortener</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Project to Shortener URL</description>
 	<url />
 	<licenses>
 		<license />
