@@ -112,4 +112,13 @@ public class URLMappingRepository {
 		return null;
 	}
 
+	public void updateHitCount(Long shortCode, String hitCountStr, SessionFactory sessionFactory) {
+		sessionFactory.getCurrentSession()
+				.createSQLQuery(
+						"update projects.url_mapping set hit_count = hit_count + :count where short_code =:shortCode")
+				.setParameter("count", hitCountStr).setParameter(URLConstants.SHORT_CODE, shortCode).executeUpdate();
+		sessionFactory.getCurrentSession().flush();
+		sessionFactory.getCurrentSession().clear();
+	}
+
 }
