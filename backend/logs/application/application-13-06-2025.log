@@ -1,0 +1,67 @@
+2025-06-13 20:37:20.067 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
+2025-06-13 20:37:20.084 INFO  [main] URLShortenerApplication - Starting URLShortenerApplication using Java 17 on ...
+2025-06-13 20:37:20.086 INFO  [main] URLShortenerApplication - No active profile set, falling back to 1 default profile: "default"
+2025-06-13 20:37:20.990 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-13 20:37:20.994 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-06-13 20:37:21.009 WARN  [main] o.s.b.a.AutoConfigurationPackages - @EnableAutoConfiguration was declared on a class in the default package. Automatic @Repository and @Entity scanning is not enabled.
+2025-06-13 20:37:21.010 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 5 ms. Found 0 JPA repository interfaces.
+2025-06-13 20:37:21.024 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
+2025-06-13 20:37:21.025 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2025-06-13 20:37:21.034 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 0 ms. Found 0 Redis repository interfaces.
+2025-06-13 20:37:21.976 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8081 (http)
+2025-06-13 20:37:21.985 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8081"]
+2025-06-13 20:37:21.985 INFO  [main] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-06-13 20:37:21.985 INFO  [main] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2025-06-13 20:37:22.135 INFO  [main] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-06-13 20:37:22.136 INFO  [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1945 ms
+2025-06-13 20:37:22.640 INFO  [main] org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.9.Final
+2025-06-13 20:37:22.852 INFO  [main] o.h.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2025-06-13 20:37:23.293 INFO  [main] org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2025-06-13 20:37:23.948 INFO  [main] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2025-06-13 20:37:24.014 DEBUG [main] com.devportal.util.Util - Log directory already exists at: 
+2025-06-13 20:37:24.148 WARN  [main] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-06-13 20:37:24.764 INFO  [main] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8081"]
+2025-06-13 20:37:24.795 INFO  [main] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8081 (http) with context path ''
+2025-06-13 20:37:24.813 INFO  [main] URLShortenerApplication - Started URLShortenerApplication in 5.284 seconds (JVM running for 6.69)
+2025-06-13 20:37:33.571 INFO  [http-nio-8081-exec-5] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-13 20:37:33.571 INFO  [http-nio-8081-exec-5] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-06-13 20:37:33.573 INFO  [http-nio-8081-exec-5] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-06-13 20:37:33.731 DEBUG [http-nio-8081-exec-5] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: null
+2025-06-13 20:37:33.915 DEBUG [http-nio-8081-exec-5] com.devportal.util.Util - Set expiry 120s for key cQkpbi in Redis
+2025-06-13 20:37:33.915 DEBUG [http-nio-8081-exec-5] com.devportal.util.Util - Saved key cQkpbi with timeout 120s to Redis
+2025-06-13 20:37:33.915 DEBUG [http-nio-8081-exec-5] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:34.679 DEBUG [http-nio-8081-exec-1] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:34.680 DEBUG [http-nio-8081-exec-1] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:35.335 DEBUG [http-nio-8081-exec-2] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:35.336 DEBUG [http-nio-8081-exec-2] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:35.470 DEBUG [http-nio-8081-exec-3] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:35.470 DEBUG [http-nio-8081-exec-3] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:35.609 DEBUG [http-nio-8081-exec-4] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:35.609 DEBUG [http-nio-8081-exec-4] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:35.763 DEBUG [http-nio-8081-exec-7] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:35.764 DEBUG [http-nio-8081-exec-7] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:35.888 DEBUG [http-nio-8081-exec-6] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:35.888 DEBUG [http-nio-8081-exec-6] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.030 DEBUG [http-nio-8081-exec-9] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.030 DEBUG [http-nio-8081-exec-9] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.159 DEBUG [http-nio-8081-exec-10] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.159 DEBUG [http-nio-8081-exec-10] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.302 DEBUG [http-nio-8081-exec-8] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.304 DEBUG [http-nio-8081-exec-8] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.434 DEBUG [http-nio-8081-exec-5] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.434 DEBUG [http-nio-8081-exec-5] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.576 DEBUG [http-nio-8081-exec-1] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.576 DEBUG [http-nio-8081-exec-1] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.712 DEBUG [http-nio-8081-exec-2] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.712 DEBUG [http-nio-8081-exec-2] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.840 DEBUG [http-nio-8081-exec-3] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.842 DEBUG [http-nio-8081-exec-3] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:36.980 DEBUG [http-nio-8081-exec-4] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:36.980 DEBUG [http-nio-8081-exec-4] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:37.105 DEBUG [http-nio-8081-exec-7] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:37.105 DEBUG [http-nio-8081-exec-7] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:37.222 DEBUG [http-nio-8081-exec-6] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:37.222 DEBUG [http-nio-8081-exec-6] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:37:37.359 DEBUG [http-nio-8081-exec-9] com.devportal.util.Util - Retrieved key cQkpbi from Redis with value: https://github.com
+2025-06-13 20:37:37.360 DEBUG [http-nio-8081-exec-9] com.devportal.util.Util - Original URL: https://github.com for shortCode: cQkpbi
+2025-06-13 20:38:13.179 INFO  [RMI TCP Connection(10)-127.0.0.1] o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin - Application shutdown requested.

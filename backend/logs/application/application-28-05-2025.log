@@ -1,5 +1,5 @@
 2025-05-28 21:21:35.284 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 6.2.3.Final
-2025-05-28 21:21:35.308 INFO  [main] URLShortenerApplication - Starting URLShortenerApplication using Java 17 on DESKTOP-G04C27L with PID 24968 
+2025-05-28 21:21:35.308 INFO  [main] URLShortenerApplication - Starting URLShortenerApplication using Java 17 ... 
 2025-05-28 21:21:35.309 INFO  [main] URLShortenerApplication - No active profile set, falling back to 1 default profile: "default"
 2025-05-28 21:21:36.042 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode!
 2025-05-28 21:21:36.045 INFO  [main] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
