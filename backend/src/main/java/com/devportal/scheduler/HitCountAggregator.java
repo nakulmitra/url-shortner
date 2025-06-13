@@ -34,12 +34,12 @@ public class HitCountAggregator {
 		}
 
 		for (String key : keys) {
-			Long shortCode = Long.valueOf(key.split(":")[1]);
+			String shortCode = key.split(":")[1];
 			String hitCountStr = redisTemplate.opsForValue().get(key);
 			Long count = hitCountStr != null ? Long.valueOf(hitCountStr) : 0;
 
 			if (count > 0) {
-				repository.updateHitCount(shortCode, hitCountStr, sessionFactory);
+				repository.updateHitCount(shortCode, count, sessionFactory);
 				redisTemplate.delete(key);
 			}
 		}
