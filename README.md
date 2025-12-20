@@ -127,6 +127,12 @@ Example console output:
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
+## YouTube playlists
+* [Java Tutorial Series](https://www.youtube.com/playlist?list=PLKrxcqbQdCgZDkAiCs6uGFK7yzhFkjNJU)
+* [PostgreSQL Series](https://www.youtube.com/playlist?list=PLKrxcqbQdCga1o3NbaommIaQmqDJ_Y3Vo)
+* [Linux tutorial series for software developers](https://www.youtube.com/playlist?list=PLKrxcqbQdCgbR2s0wxze6WE_OW07u_yJ8)
+* [Real-World Projects with OOP Concepts](https://www.youtube.com/playlist?list=PLKrxcqbQdCgaAtUObt11xA63eO7kx4Epj)
+
 ## Author
 
 **Dev Portal**
